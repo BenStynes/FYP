@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="LargeTexture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 462.435, 99.9832 )
+scale = Vector2( 0.980233, 1.25951 )
+color = Color( 0.721569, 0.431373, 0.431373, 1 )
+texture = SubResource( 2 )
+polygon = PoolVector2Array( 63.3032, 64.994, 119.209, 63.8389, 134.694, 149.152, 134.068, 219.376, 153.952, 238.578, 110.621, 244.746, 88.551, 157.784, 77.8823, 247.829, 27.6449, 252.576, 46.1064, 226.244, 47.7938, 149.314 )
