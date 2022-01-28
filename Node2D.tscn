@@ -1,15 +1,56 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[sub_resource type="ShaderMaterial" id=1]
+[ext_resource path="res://Solid_red.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
-[sub_resource type="LargeTexture" id=2]
+[sub_resource type="TileSet" id=1]
+0/name = "Solid_red.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-material = SubResource( 1 )
-position = Vector2( 462.435, 99.9832 )
-scale = Vector2( 0.980233, 1.25951 )
-color = Color( 0.721569, 0.431373, 0.431373, 1 )
-texture = SubResource( 2 )
-polygon = PoolVector2Array( 63.3032, 64.994, 119.209, 63.8389, 134.694, 149.152, 134.068, 219.376, 153.952, 238.578, 110.621, 244.746, 88.551, 157.784, 77.8823, 247.829, 27.6449, 252.576, 46.1064, 226.244, 47.7938, 149.314 )
+[node name="TileMap" type="TileMap" parent="." groups=[
+"terrain",
+]]
+tile_set = SubResource( 1 )
+collision_use_kinematic = true
+format = 1
+tile_data = PoolIntArray( -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -262135, 0, 0, -262134, 0, 0, -262133, 0, 0, -262132, 0, 0, -196608, 0, 0, -196596, 0, 0, -131072, 0, 0, -131067, 0, 0, -131060, 0, 0, -65536, 0, 0, -65524, 0, 0, 0, 0, 0, 12, 0, 0, 65536, 0, 0, 65543, 0, 0, 65548, 0, 0, 131072, 0, 0, 131084, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0 )
+
+[node name="character" type="KinematicBody2D" parent="."]
+position = Vector2( 576, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="character"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="character"]
+position = Vector2( 32, 32 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="character"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 422.286, -1.78186 )
+rotating = true
+current = true
