@@ -12,6 +12,7 @@ var grid = []
 
 onready var Obstacle = preload("res://Obstical.tscn")
 onready var Player = preload("res://Player.tscn")
+onready var Enemy = preload("res://Enemy.tscn")
 
 onready var Sorter = get_child(0)
 
@@ -37,12 +38,28 @@ func _ready():
 				if not grid_pos in positions:
 					positions.append(grid_pos)
 					placed = true
+		
 	for pos in positions:
 		var new_obstacle = Obstacle.instance()
 		new_obstacle.position = map_to_world(pos) + tile_offset	
 		grid[pos.x][pos.y] = new_obstacle.get_name()
 		Sorter.add_child(new_obstacle)
+	
+	var positions2 = []
+	for x in range(2):
+		var placed = false
+		while not placed:
+			var grid_pos = Vector2(randi() % int(grid_size.x), randi() % int(grid_size.y))
+			if not grid[grid_pos.x][grid_pos.y]:
+				if not grid_pos in positions2:
+					positions2.append(grid_pos)
+					placed = true
 		
+	for pos in positions2:
+		var new_enemy = Enemy.instance()
+		new_enemy.position = map_to_world(pos) + tile_offset	
+		grid[pos.x][pos.y] = new_enemy.get_name()
+		Sorter.add_child(new_enemy)
 		
 func get_cell_content(pos=Vector2()):
 	return grid[pos.x][pos.y]
