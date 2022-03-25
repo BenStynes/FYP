@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "TileMap",
+"class": "AStar_Path",
+"language": "GDScript",
+"path": "res://AStar_Path.gd"
+}, {
+"base": "Node2D",
+"class": "CombatArena",
+"language": "GDScript",
+"path": "res://CombatArena.gd"
+}, {
+"base": "Node2D",
+"class": "TurnQueue",
+"language": "GDScript",
+"path": "res://TurnQueue.gd"
+} ]
+_global_script_class_icons={
+"AStar_Path": "",
+"CombatArena": "",
+"TurnQueue": ""
+}
+
 [application]
 
 config/name="Fyp"

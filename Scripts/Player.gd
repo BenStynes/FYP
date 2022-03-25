@@ -56,3 +56,26 @@ func _process(delta):
 			is_moving = false
 		else:
 			position = pos + motion
+
+func _input(event):
+	if(event is InputEventMouseButton && event.is_pressed() && event.button_index == BUTTON_LEFT):
+		var mouse_pos = grid.world_to_map(get_global_mouse_position())
+		if Vector2(mouse_pos - grid.world_to_map(position)).length() < 5:
+			if grid.used_cells.has(mouse_pos):
+				var player_pos = grid.world_to_map(position)
+				grid._get_path(player_pos,mouse_pos)
+				move()
+			
+func move():
+
+	grid.set_cellv(grid.path[grid.path.size()-1],2)
+	
+	for p in grid.path:
+		
+		var pos = grid.map_to_world(p)
+		position = Vector2(pos.x,pos.y+20)
+		yield(get_tree().create_timer(0.1),"timeout")
+		
+		
+	grid.set_cellv(grid.path[grid.path.size()-1],2)
+	

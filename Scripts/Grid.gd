@@ -1,4 +1,4 @@
-extends TileMap
+extends AStar_Path
 
 enum {PLAYER,OBSTACLE,ENEMY}
 
@@ -16,7 +16,7 @@ onready var Enemy = preload("res://Enemy.tscn")
 
 onready var Sorter = get_child(0)
 
-
+onready var new_player = Player.instance()
 
 func _ready():
 	randomize()
@@ -25,7 +25,7 @@ func _ready():
 		for y in range(grid_size.y):
 			grid[x].append(null)
 			
-	var new_player = Player.instance()
+	
 	new_player.position = map_to_world(Vector2(4,4)) + tile_offset
 	Sorter.add_child(new_player)
 	
@@ -86,4 +86,6 @@ func update_child_pos(pos,direction,type):
 func is_cell_of_type(pos=Vector2(),type=null):
 	var grid_pos = world_to_map(pos)
 	return true if grid[grid_pos.x][grid_pos.y] == type else false
+	
+
 

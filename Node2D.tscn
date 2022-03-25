@@ -63,6 +63,12 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -10.6072, 532.394 )
+rotating = true
+current = true
+zoom = Vector2( 2, 2 )
+
 [node name="TileMap" type="TileMap" parent="." groups=[
 "terrain",
 ]]
@@ -77,9 +83,3 @@ script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="TileMap"]
 position = Vector2( 0.297638, 0 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -10.6072, 532.394 )
-rotating = true
-current = true
-zoom = Vector2( 2, 2 )
