@@ -1,19 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://theme/theme.tres" type="Theme" id=1]
-[ext_resource path="res://Combat.gd" type="Script" id=2]
+[ext_resource path="res://Combat/Combat.gd" type="Script" id=2]
+[ext_resource path="res://Combat/UI.gd" type="Script" id=3]
+[ext_resource path="res://Info.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Combat/TurnQueue.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func add_combatant(new_combatant):
+	new_combatant.position.x += 200 * get_child_count()
+	add_child(new_combatant)
+"
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Combatants" type="Node2D" parent="."]
+script = SubResource( 1 )
 
 [node name="TurnQueue" type="Node" parent="."]
+script = ExtResource( 5 )
+combatants_list = NodePath("../Combatants")
 
 [node name="UI" type="Control" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
 theme = ExtResource( 1 )
+script = ExtResource( 3 )
+combatants_node = NodePath("../Combatants")
+info_scene = ExtResource( 4 )
 
 [node name="Combatants" type="HBoxContainer" parent="UI"]
 margin_top = 77.0
@@ -49,3 +66,7 @@ margin_top = 123.0
 margin_right = 175.0
 margin_bottom = 242.0
 text = "Flee"
+
+[connection signal="button_up" from="UI/Buttons/GridContainer/Attack" to="UI" method="_on_Attack_button_up"]
+[connection signal="button_up" from="UI/Buttons/GridContainer/Defend" to="UI" method="_on_Defend_button_up"]
+[connection signal="button_up" from="UI/Buttons/GridContainer/Flee" to="UI" method="_on_Flee_button_up"]

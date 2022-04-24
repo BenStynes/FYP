@@ -1,4 +1,4 @@
-extends KinematicBody2
+extends KinematicBody2D
 var tile_size = 64;
 var move_time = 0.25;
 var terrain = null;

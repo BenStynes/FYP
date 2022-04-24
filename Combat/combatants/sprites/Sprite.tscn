@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Combat/combatants/sprites/blue.png" type="Texture" id=1]
+[ext_resource path="res://Combat/combatants/sprites/shadow.png" type="Texture" id=2]
+
+[node name="Sprite" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Pivot" type="Position2D" parent="."]
+
+[node name="Shadow" type="Sprite" parent="Pivot"]
+position = Vector2( -492, -386 )
+texture = ExtResource( 2 )
+offset = Vector2( 492, 386 )
+
+[node name="Body" type="Sprite" parent="Pivot"]
+position = Vector2( -491, -446 )
+texture = ExtResource( 1 )
+offset = Vector2( 492, 386 )

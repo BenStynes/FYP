@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Combat/combatants/Combatant.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Combat/combatants/Opponent.gd" type="Script" id=2]
+[ext_resource path="res://Combat/combatants/sprites/green.png" type="Texture" id=3]
+
+[node name="Opponent" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Body" parent="Sprite/Pivot" index="1"]
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 0.25
+one_shot = true
+
+[editable path="Sprite"]

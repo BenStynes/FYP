@@ -1,6 +1,6 @@
-extends AStar_Path
+extends TileMap
 
-enum {PLAYER,OBSTACLE,ENEMY}
+enum CellType {ACTOR,OBSTACLE,OBJECT}
 
 var tile_size = get_cell_size()
 
@@ -19,50 +19,15 @@ onready var Sorter = get_child(0)
 onready var new_player = Player.instance()
 
 func _ready():
-	randomize()
-	for x in range(grid_size.x):
-		grid.append([])
-		for y in range(grid_size.y):
-			grid[x].append(null)
-			
-	
-	new_player.position = map_to_world(Vector2(4,4)) + tile_offset
-	Sorter.add_child(new_player)
-	
-	var positions = []
-	for x in range(5):
-		var placed = false
-		while not placed:
-			var grid_pos = Vector2(randi() % int(grid_size.x), randi() % int(grid_size.y))
-			if not grid[grid_pos.x][grid_pos.y]:
-				if not grid_pos in positions:
-					positions.append(grid_pos)
-					placed = true
+	for child in get_children():
+		set_cellv(world_to_map(child.position), child.type)
 		
-	for pos in positions:
-		var new_obstacle = Obstacle.instance()
-		new_obstacle.position = map_to_world(pos) + tile_offset	
-		grid[pos.x][pos.y] = new_obstacle.get_name()
-		Sorter.add_child(new_obstacle)
-	
-	var positions2 = []
-	for x in range(2):
-		var placed = false
-		while not placed:
-			var grid_pos = Vector2(randi() % int(grid_size.x), randi() % int(grid_size.y))
-			if not grid[grid_pos.x][grid_pos.y]:
-				if not grid_pos in positions2:
-					positions2.append(grid_pos)
-					placed = true
-		
-	for pos in positions2:
-		var new_enemy = Enemy.instance()
-		new_enemy.position = map_to_world(pos) + tile_offset	
-		grid[pos.x][pos.y] = new_enemy.get_name()
-		Sorter.add_child(new_enemy)
-		
-func get_cell_content(pos=Vector2()):
-	return grid[pos.x][pos.y]
+func get_cell_pawn(cell, type = CellType.ACTOR):
+	for node in get_children():
+		if node.type != type:
+			continue
+		if world_to_map(node.position) == cell:
+			return(node)
 	
 func is_cell_vacant(pos=Vector2(), direction=Vector2()):
 	var grid_pos = world_to_map(pos) + direction

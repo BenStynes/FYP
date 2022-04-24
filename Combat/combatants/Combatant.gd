@@ -14,7 +14,7 @@ func set_active(value):
 	
 	if not active:
 		return
-	if $Health.armor >= $Health.base_armour + defense:
+	if $Health.armor >= $Health.base_armor + defense:
 		$Health.armor = $Health.base_armor
 
 
@@ -25,20 +25,13 @@ func attack(target):
 
 func consume(item):
 	item.use(self)
-	emit_signal("turn_finished")# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
+	emit_signal("turn_finished")
+	
 func defend():
-	$Health.armor += defense # Replace with function body.
+	$Health.armor += defense
 	emit_signal("turn_finished")
 
 
 func take_damage(damage_to_take):
 	$Health.take_damage(damage_to_take)
 	$Sprite/AnimationPlayer.play("take_damage")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

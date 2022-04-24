@@ -17,17 +17,23 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Combatant",
 "language": "GDScript",
-"path": "res://Combatant.gd"
+"path": "res://Combat/combatants/Combatant.gd"
+}, {
+"base": "Node2D",
+"class": "Pawn",
+"language": "GDScript",
+"path": "res://Movement/pawns/Pawn.gd"
 } ]
 _global_script_class_icons={
 "AStar_Path": "",
-"Combatant": ""
+"Combatant": "",
+"Pawn": ""
 }
 
 [application]
 
 config/name="Fyp"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [physics]
