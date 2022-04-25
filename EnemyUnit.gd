@@ -13,7 +13,7 @@ export var skin_offset := Vector2.ZERO setget set_skin_offset
 export var move_speed := 600.0
 
 var cell := Vector2.ZERO setget set_cell
-
+var moved = false;
 var is_enemyTurn := false  setget set_is_selected
 
 var _is_walking := false setget _set_is_walking
@@ -79,6 +79,6 @@ func walk_along(path: PoolVector2Array) -> void:
 	curve.add_point(Vector2.ZERO)
 	for point in path:
 		curve.add_point(grid.calculate_map_position(point) - position)
-	cell = path[-1]
+	cell = path[-2]
 	
 	self._is_walking = true
