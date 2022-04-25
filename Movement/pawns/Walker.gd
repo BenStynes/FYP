@@ -5,7 +5,7 @@ onready var parent = get_parent()
 export(PackedScene) var combat_actor
 #warning-ignore:unused_class_variable
 var lost = false
-
+var moveSpaces = 4;
 func _ready():
 	update_look_direction(Vector2.RIGHT)
 
@@ -19,6 +19,9 @@ func _process(_delta):
 	var target_position = parent.request_move(self, input_direction)
 	if target_position:
 		move_to(target_position)
+		moveSpaces = moveSpaces -1
+		if moveSpaces <= 0:
+			endTurn()
 		$Tween.start()
 	else:
 		bump()
@@ -50,3 +53,7 @@ func move_to(target_position):
 
 func bump():
 	$AnimationPlayer.play("bump")
+
+func endTurn():
+	set_process(false)
+	yield(parent.get_Child(1),"turn_done")

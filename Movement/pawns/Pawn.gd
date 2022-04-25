@@ -1,5 +1,5 @@
 class_name Pawn
-extends Node2D
+extends AStar_Path
 
 enum CellType {ACTOR,OBSTACLE,OBJECT}
 #warning-ignore:unused_class_variable

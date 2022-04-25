@@ -19,6 +19,7 @@ func set_active(value):
 
 
 func attack(target):
+	
 	target.take_damage(damage)
 	emit_signal("turn_finished")
 

@@ -20,21 +20,73 @@ _global_script_classes=[ {
 "path": "res://Combat/combatants/Combatant.gd"
 }, {
 "base": "Node2D",
+"class": "Cursor",
+"language": "GDScript",
+"path": "res://Cursor.gd"
+}, {
+"base": "Path2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://EnemyUnit.gd"
+}, {
+"base": "Node2D",
+"class": "GameBoard",
+"language": "GDScript",
+"path": "res://GameBoard.gd"
+}, {
+"base": "Resource",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://Grid.gd"
+}, {
+"base": "Reference",
+"class": "PathFinder",
+"language": "GDScript",
+"path": "res://PathFinder.gd"
+}, {
+"base": "AStar_Path",
 "class": "Pawn",
 "language": "GDScript",
 "path": "res://Movement/pawns/Pawn.gd"
+}, {
+"base": "Path2D",
+"class": "Unit",
+"language": "GDScript",
+"path": "res://Unit.gd"
+}, {
+"base": "TileMap",
+"class": "UnitOverlay",
+"language": "GDScript",
+"path": "res://UnitOverlay.gd"
+}, {
+"base": "TileMap",
+"class": "UnitPath",
+"language": "GDScript",
+"path": "res://UnitPath.gd"
 } ]
 _global_script_class_icons={
 "AStar_Path": "",
 "Combatant": "",
-"Pawn": ""
+"Cursor": "",
+"Enemy": "",
+"GameBoard": "",
+"Grid": "",
+"PathFinder": "",
+"Pawn": "",
+"Unit": "",
+"UnitOverlay": "",
+"UnitPath": ""
 }
 
 [application]
 
 config/name="Fyp"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+camera=false
 
 [physics]
 

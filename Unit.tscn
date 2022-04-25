@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://EnemyUnit.gd" type="Script" id=1]
+[ext_resource path="res://Unit.gd" type="Script" id=1]
 [ext_resource path="res://Combat/combatants/sprites/shadow2.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.71 ), Color( 1.5, 1.5, 1.5, 1 ) ]
 }
 
-[node name="Enemy" type="Path2D"]
+[node name="Unit" type="Path2D"]
 curve = null
 script = ExtResource( 1 )
 
@@ -46,6 +46,7 @@ loop = false
 
 [node name="Sprite" type="Sprite" parent="PathFollow2D"]
 modulate = Color( 1.20273, 1.20273, 1.20273, 0.827583 )
+position = Vector2( 1.66855, -6.17363 )
 scale = Vector2( 2, 2 )
 
 [node name="shadow" type="Sprite" parent="PathFollow2D"]

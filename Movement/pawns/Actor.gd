@@ -41,3 +41,6 @@ func move_to(target_position):
 	
 func bump():
 	$AnimationPlayer.play("bump")
+func endTurn():
+	set_process(false)
+	yield(Grid.get_Child(0),"turn_done")
